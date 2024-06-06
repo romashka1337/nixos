@@ -5,7 +5,7 @@
       mainBar = {
         layer = "top";
         position = "top";
-        margin = "6 13 -12 18";
+        margin = "6 13 -12 13";
 
         modules-left = ["hyprland/workspaces" "hyprland/language" "hyprland/submap"];
         modules-center = ["clock"];
