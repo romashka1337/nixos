@@ -21,7 +21,6 @@
           "<C-d>" = "<C-d>zz";
           "<C-j>" = "<cmd>cnext<CR>zz";
           "<C-k>" = "<cmd>cprev<CR>zz";
-          "<leader>tt" = ":TroubleToggle<CR>";
           "<leader>f" = "<cmd>lua vim.lsp.buf.format()<cr>";
         };
       visual =
