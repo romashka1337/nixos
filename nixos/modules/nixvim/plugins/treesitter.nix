@@ -1,13 +1,6 @@
 {
   programs.nixvim.plugins = {
-
     hmts.enable = true;
-
-    # go = {
-    #   enable = true;
-    #   gofmt = "golines";
-    #   max_line_len = 80;
-    # };
 
     treesitter = {
       enable = true;

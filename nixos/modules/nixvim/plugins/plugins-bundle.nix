@@ -2,7 +2,8 @@
   imports = [
     ./lualine.nix
     ./treesitter.nix
-    ./mini.nix
+    ./undotree.nix
+    ./ibl.nix
     ./telescope.nix
     ./nix.nix
     ./lsp.nix
