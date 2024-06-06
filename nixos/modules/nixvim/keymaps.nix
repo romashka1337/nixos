@@ -1,4 +1,8 @@
-{ config, lib, ... }: {
+{
+  config,
+  lib,
+  ...
+}: {
   programs.nixvim = {
     globals = {
       mapleader = " ";
@@ -17,8 +21,6 @@
           "<C-d>" = "<C-d>zz";
           "<C-j>" = "<cmd>cnext<CR>zz";
           "<C-k>" = "<cmd>cprev<CR>zz";
-          "gd" = "definition";
-          "K" = "hover";
           "<leader>tt" = ":TroubleToggle<CR>";
           "<leader>f" = "<cmd>lua vim.lsp.buf.format()<cr>";
         };

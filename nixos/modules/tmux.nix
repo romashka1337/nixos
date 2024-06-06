@@ -1,10 +1,6 @@
 {
   programs.tmux = {
     enable = true;
-    # shortcut = "a";
-    # aggressiveResize = true; -- Disabled to be iTerm-friendly
-    # baseIndex = 1;
-    # newSession = true;
 
     extraConfig = ''
       set -g default-terminal "screen-256color"
@@ -49,19 +45,11 @@
       set -g visual-activity on
 
       set -g mouse on
-      # set -ga terminal-overrides ',*256color*:smcup@:rmcup@'
 
-
-      # create session
-      # unbind C-c
       bind-key -r f run-shell "tmux neww ~/tmux/tmux-sessionizer"
-      # find session
 
-      # split current window horizontally
       unbind '"'
       bind \\ split-window -v
-
-      # split current window vertically
       unbind %
       bind | split-window -h
 
@@ -82,6 +70,7 @@
       unbind n
       unbind p
 
+      # vi mode
       set -g mode-keys vi
       setw -g mode-keys vi
       set-window-option mode-keys vi

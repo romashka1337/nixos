@@ -1,7 +1,6 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   nixpkgs.config = {
     allowUnfree = true;
-    permittedInsecurePackages = ["nodejs_15"];
   };
 
   environment.systemPackages = with pkgs; [
@@ -56,8 +55,8 @@
 
   fonts.packages = with pkgs; [
     jetbrains-mono
-    
+
     font-awesome
-    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+    (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
   ];
 }

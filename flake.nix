@@ -5,7 +5,6 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
-    
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,18 +16,15 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:
-
-    
-    #packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
-
-    #packages.x86_64-linux.default = self.packages.x86_64-linux.hello;
-
-    let
-      system = "x86_64-linux";
-    in {
-
-    # nixos - system hostname
+  outputs = {
+    self,
+    nixpkgs,
+    nixpkgs-stable,
+    home-manager,
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+  in {
     nixosConfigurations.collaps1ng = nixpkgs.lib.nixosSystem {
       specialArgs = {
         pkgs-stable = import nixpkgs-stable {
@@ -45,7 +41,7 @@
 
     homeConfigurations.collaps1ng = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
-      modules = [ ./home-manager/home.nix ];
+      modules = [./home-manager/home.nix];
     };
   };
 }

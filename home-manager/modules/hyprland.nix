@@ -34,7 +34,7 @@
 
       input = {
         kb_layout = "us,ru";
-	      kb_variant = "lang";
+        kb_variant = "lang";
         kb_options = "grp:win_space_toggle";
 
         follow_mouse = 1;
@@ -47,9 +47,9 @@
       };
 
       general = {
-        gaps_in = 5;
-        gaps_out = 20;
-        border_size = 3;
+        gaps_in = 0;
+        gaps_out = 15;
+        border_size = 2;
         "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
         layout = "dwindle";
@@ -66,10 +66,10 @@
         "col.shadow" = "rgba(1a1a1aee)";
 
         blur = {
-    	  enabled = true;
-    	  size = 16;
-        passes = 2;
-        new_optimizations = true;
+          enabled = true;
+          size = 16;
+          passes = 2;
+          new_optimizations = true;
         };
       };
 
@@ -109,7 +109,7 @@
         "$mainMod, l, movefocus, r"
         "$mainMod, k, movefocus, u"
         "$mainMod, j, movefocus, d"
-        
+
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
         "$mainMod, 3, workspace, 3"
@@ -131,7 +131,6 @@
         "$mainMod SHIFT, 8, movetoworkspace, 8"
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
-
       ];
     };
   };
