@@ -20,14 +20,14 @@
         "7, monitor:HDMI-A-1"
         "8, monitor:HDMI-A-1"
         "9, monitor:HDMI-A-1"
-        "0, monitor:HDMI-A-1"
+        "10, monitor:HDMI-A-1"
       ];
 
       env = [
         "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_TYPE,wayland"
         "XDG_SESSION_DESKTOP,Hyprland"
-        "XCURSOR_SIZE,36"
+        # "XCURSOR_SIZE,12"
         "QT_QPA_PLATFORM,wayland"
         "XDG_SCREENSHOTS_DIR,~/screens"
       ];
@@ -89,9 +89,12 @@
       exec-once = [
         "swww init"
         "waybar"
+        "wl-paste --type text --watch cliphist store"
+        "wl-paste --type image --watch cliphist store"
       ];
 
       bind = [
+        "$mainMod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
         "$mainMod, RETURN, exec, alacritty -e tmux new-session -A -s home"
         "$mainMod, Q, killactive,"
         "$mainMod, M, exit,"
@@ -99,11 +102,8 @@
         "$mainMod, E, exec, $fileManager"
         "$mainMod, D, exec, wofi --show drun"
         "$mainMod, O, exec, google-chrome-stable"
-        "$mainMod, V, togglefloating,"
-        "$mainMod, R, exec, $menu"
         "$mainMod, P, pseudo, # dwindle"
-        "$mainMod, S, exec, grim -g \"$(slurp)\" - | wl-copy"
-        # "$mainMod, J, togglesplit, # dwindle"
+        "SUPER_SHIFT, S, exec, grim -g \"$(slurp)\" - | wl-copy"
 
         "$mainMod, h, movefocus, l"
         "$mainMod, l, movefocus, r"
