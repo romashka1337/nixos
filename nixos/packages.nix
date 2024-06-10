@@ -11,6 +11,7 @@
     rofi
     wofi
     postman
+    vscode
 
     # cli
     tmux
