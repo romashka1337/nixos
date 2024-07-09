@@ -7,6 +7,10 @@
   disabledModules = [
     ./modules/xserver.nix
   ];
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
@@ -47,7 +51,7 @@
   # };
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [10000];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

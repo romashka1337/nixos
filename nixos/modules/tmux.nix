@@ -6,8 +6,8 @@
       set -g default-terminal "screen-256color"
 
       setw -g xterm-keys on
-      set -s escape-time 10                     # faster command sequences
-      set -sg repeat-time 600                   # increase repeat timeout
+      set -s escape-time 0                      # faster command sequences
+      # set -sg repeat-time 600                   # increase repeat timeout
       set -s focus-events on
 
       unbind C-b

@@ -23,9 +23,11 @@
     swww
     gnumake
     kubectl
+    kubernetes-helm
     zip
     unzip
     jq
+    dig
 
     nodejs
     lua

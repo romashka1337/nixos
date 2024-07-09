@@ -17,11 +17,10 @@
 
   users = {
     defaultUserShell = pkgs.zsh;
-
     users.collaps1ng = {
       isNormalUser = true;
       description = "collaps1ng";
-      extraGroups = ["networkmanager" "wheel"];
+      extraGroups = ["networkmanager" "wheel" "docker"];
     };
   };
 
