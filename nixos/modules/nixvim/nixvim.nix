@@ -11,24 +11,14 @@
     defaultEditor = true;
     colorschemes.catppuccin = {
       enable = true;
-      settings = {
-        flavour = "mocha";
-        disable_underline = true;
-        term_colors = true;
-        color_overrides.mocha.base = "#1e1e2f";
-        styles = {
-          booleans = [
-            "bold"
-            "italic"
-          ];
-          conditionals = ["bold"];
-        };
-        integrations = {
-          cmp = true;
-          gitsigns = true;
-          treesitter = true;
-        };
-      };
     };
+    extraConfigLua = ''
+      require("nvim-treesitter.configs").setup {
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = false
+        },
+      }
+    '';
   };
 }
