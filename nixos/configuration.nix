@@ -4,9 +4,7 @@
     ./packages.nix
     ./modules/main.nix
   ];
-  disabledModules = [
-    ./modules/xserver.nix
-  ];
+
   virtualisation.docker.rootless = {
     enable = true;
     setSocketVariable = true;
@@ -18,11 +16,12 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "collaps1ng";
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "collaps1ng";
+    networkmanager.enable = true;
+  };
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   services = {
     # Enable CUPS to print documents.

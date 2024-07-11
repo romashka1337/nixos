@@ -44,7 +44,7 @@
     xwayland
     wl-clipboard
     cliphist
-    herbstluftwm
+    # herbstluftwm
     hyprland
     seatd
     xdg-desktop-portal-hyprland

@@ -6,7 +6,7 @@
       enable = true;
       nixvimInjections = true;
       folding = true;
-      # indent.enable = true;
+      settings.indent.enable = true;
     };
 
     treesitter-context = {
