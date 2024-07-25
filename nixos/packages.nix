@@ -13,6 +13,9 @@
     postman
     vscode
 
+    vial
+    via
+
     # cli
     tmux
     git
@@ -53,7 +56,17 @@
     grim
     slurp
 
+    pipewire
+    pulseaudio
+    pamixer
+    brightnessctl
+
     home-manager
+  ];
+
+  services.udev.packages = with pkgs; [
+    vial
+    via
   ];
 
   fonts.packages = with pkgs; [
