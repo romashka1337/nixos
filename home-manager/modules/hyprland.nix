@@ -53,8 +53,10 @@
         "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
         layout = "dwindle";
+      };
 
-        cursor_inactive_timeout = 1;
+      cursor = {
+        inactive_timeout = 1;
       };
 
       decoration = {
@@ -79,7 +81,7 @@
       };
 
       master = {
-        new_is_master = true;
+        new_status = "master";
       };
 
       gestures = {
