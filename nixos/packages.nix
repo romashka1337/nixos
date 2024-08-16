@@ -31,6 +31,10 @@
     unzip
     jq
     dig
+    docker
+    docker-compose
+    runc
+    containerd
 
     nodejs
     lua
