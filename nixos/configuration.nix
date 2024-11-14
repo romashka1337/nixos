@@ -16,10 +16,19 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
+
   # Enable networking
   networking = {
     hostName = "collaps1ng";
     networkmanager.enable = true;
+    extraHosts = ''
+    '';
   };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -52,7 +61,10 @@
   # };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [10000];
+  networking.firewall = {
+    enable = false;
+    allowedTCPPorts = [10000 9999 9876];
+  };
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

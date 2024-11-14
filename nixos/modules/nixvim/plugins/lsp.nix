@@ -13,7 +13,7 @@
 
       servers = {
         eslint.enable = true;
-        nil-ls.enable = true;
+        nil_ls.enable = true;
         gopls = {
           enable = true;
         };

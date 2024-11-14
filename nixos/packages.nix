@@ -1,82 +1,96 @@
-{pkgs, ...}: {
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
+let
+  unstable = import <nixpkgs-unstable> {config = {allowUnfree = true;};};
+in
+  {pkgs, ...}: {
+    nixpkgs.config = {
+      allowUnfree = true;
+      allowBroken = true;
+    };
 
-  environment.systemPackages = with pkgs; [
-    # gui
-    telegram-desktop
-    alacritty
-    google-chrome
-    rofi
-    wofi
-    postman
-    vscode
+    environment.systemPackages = with pkgs; [
+      # gui
+      telegram-desktop
+      alacritty
+      google-chrome
+      rofi
+      wofi
+      postman
+      vscode
+      deluge
+      vlc
+      prismlauncher
 
-    vial
-    via
+      unstable.hiddify-app
 
-    # cli
-    tmux
-    git
-    libgcc
-    htop
-    fzf
-    ripgrep
-    swww
-    gnumake
-    kubectl
-    kubernetes-helm
-    zip
-    unzip
-    jq
-    dig
-    docker
-    docker-compose
-    runc
-    containerd
+      remmina
+      vial
+      via
 
-    nodejs
-    lua
-    protobuf
+      # cli
+      tmux
+      git
+      libgcc
+      htop
+      fzf
+      ripgrep
+      swww
+      gnumake
+      kubectl
+      kubernetes-helm
+      zip
+      unzip
+      jq
+      dig
+      docker
+      docker-compose
+      runc
+      containerd
+      mongodb-compass
+      npm-check-updates
+      traceroute
 
-    # golang specific
-    go
-    golines
-    air
-    protoc-gen-go
-    protoc-gen-go-grpc
+      nodejs
+      lua
+      protobuf
 
-    # wm
-    xwayland
-    wl-clipboard
-    cliphist
-    # herbstluftwm
-    hyprland
-    seatd
-    xdg-desktop-portal-hyprland
-    polybar
-    waybar
-    grim
-    slurp
+      # golang specific
+      go
+      golines
+      air
+      protoc-gen-go
+      protoc-gen-go-grpc
+      golangci-lint
 
-    pipewire
-    pulseaudio
-    pamixer
-    brightnessctl
+      # wm
+      xwayland
+      wl-clipboard
+      cliphist
+      # herbstluftwm
+      hyprland
+      seatd
+      xdg-desktop-portal-hyprland
+      polybar
+      waybar
+      grim
+      slurp
 
-    home-manager
-  ];
+      pipewire
+      pulseaudio
+      pamixer
+      brightnessctl
 
-  services.udev.packages = with pkgs; [
-    vial
-    via
-  ];
+      home-manager
+    ];
 
-  fonts.packages = with pkgs; [
-    jetbrains-mono
+    services.udev.packages = with pkgs; [
+      vial
+      via
+    ];
 
-    font-awesome
-    (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
-  ];
-}
+    fonts.packages = with pkgs; [
+      jetbrains-mono
+
+      font-awesome
+      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
+    ];
+  }
