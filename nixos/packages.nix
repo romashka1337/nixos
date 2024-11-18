@@ -21,6 +21,7 @@ in
       prismlauncher
 
       unstable.hiddify-app
+      unstable.zed-editor
 
       remmina
       vial
