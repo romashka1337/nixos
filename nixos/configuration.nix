@@ -28,6 +28,7 @@
     hostName = "collaps1ng";
     networkmanager.enable = true;
     extraHosts = ''
+      0.0.0.0 internal-gitlab.local
     '';
   };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -50,7 +51,10 @@
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
+  security = {
+    rtkit.enable = true;
+    pki.certificateFiles = [/ca.crt];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

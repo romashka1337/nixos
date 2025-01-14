@@ -92,6 +92,6 @@ in
       jetbrains-mono
 
       font-awesome
-      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
+      pkgs.nerd-fonts.symbols-only
     ];
   }

@@ -7,9 +7,9 @@
         position = "top";
         margin = "6 13 -12 13";
 
-        modules-left = ["hyprland/workspaces" "hyprland/language" "hyprland/submap"];
+        modules-left = ["hyprland/workspaces" "hyprland/language"];
         modules-center = ["clock"];
-        modules-right = ["pulseaudio" "custom/mem" "cpu" "temperature" "backlight" "battery" "tray"];
+        modules-right = ["pulseaudio" "custom/mem" "cpu" "backlight" "battery" "tray"];
 
         "hyprland/workspaces" = {
           disable-scroll = true;
@@ -23,7 +23,7 @@
         };
 
         "clock" = {
-          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          tooltip-format = "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>";
           format = "{:%a; %d %b, %I:%M %p}";
         };
 
@@ -60,16 +60,6 @@
           interval = 2;
           format = "{usage}% ";
           min-length = 6;
-        };
-
-        "temperature" = {
-          # thermal-zone = 2;
-          # hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
-          critical-threshold = 80;
-          # format-critical = "{temperatureC}°C {icon}";
-          format = "{temperatureC}°C {icon}";
-          format-icons = ["" "" "" "" ""];
-          tooltip = false;
         };
 
         "backlight" = {
@@ -156,15 +146,6 @@
           padding-left: 16px;
           padding-right: 8px;
           border-radius: 10px 10px 10px 10px;
-          transition: none;
-          color: #ffffff;
-          background: #383c4a;
-      }
-
-      #submap {
-          padding-left: 16px;
-          padding-right: 16px;
-          border-radius: 5px;
           transition: none;
           color: #ffffff;
           background: #383c4a;
@@ -261,14 +242,15 @@
       #battery.critical:not(.charging) {
           background-color: #f53c3c;
           color: #ffffff;
-          animation-name: blink;
-          animation-duration: 0.5s;
-          animation-timing-function: linear;
-          animation-iteration-count: infinite;
-          animation-direction: alternate;
+          /*animation-name: blink;*/
+          /*animation-duration: 0.5s;*/
+          /*animation-timing-function: linear;*/
+          /*animation-iteration-count: infinite;*/
+          /*animation-direction: alternate;*/
       }
 
       #tray {
+          margin-left: 8px;
           padding-left: 16px;
           padding-right: 16px;
           border-radius: 5px;
