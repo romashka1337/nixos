@@ -36,6 +36,8 @@
   services = {
     # Enable CUPS to print documents.
     printing.enable = true;
+    # Enable sound with pipewire.
+    pulseaudio.enable = false;
 
     pipewire = {
       enable = true;
@@ -49,8 +51,6 @@
     openssh.enable = true;
   };
 
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
   security = {
     rtkit.enable = true;
     pki.certificateFiles = [/ca.crt];

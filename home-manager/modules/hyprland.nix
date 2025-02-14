@@ -5,9 +5,13 @@
     settings = {
       "$mainMod" = "SUPER";
 
+      # monitor = [
+      #   "eDP-1,1920x1080@60,2000x2000,1"
+      #   "HDMI-A-1,2560x1440@144,3920x520,1,transform,1"
+      # ];
       monitor = [
         "eDP-1,1920x1080@60,2000x2000,1"
-        "HDMI-A-1,2560x1440@144,3920x520,1,transform,1"
+        "HDMI-A-1,2560x1440@144,560x520,1,transform,1"
       ];
 
       workspace = [
@@ -21,6 +25,16 @@
         "8, monitor:HDMI-A-1"
         "9, monitor:HDMI-A-1"
         "10, monitor:HDMI-A-1"
+        # "6, monitor:eDP-1"
+        # "7, monitor:eDP-1"
+        # "8, monitor:eDP-1"
+        # "9, monitor:eDP-1"
+        # "0, monitor:eDP-1"
+        # "1, monitor:HDMI-A-1"
+        # "2, monitor:HDMI-A-1"
+        # "3, monitor:HDMI-A-1"
+        # "4, monitor:HDMI-A-1"
+        # "5, monitor:HDMI-A-1"
       ];
 
       env = [
@@ -76,11 +90,14 @@
       };
 
       master = {
-        new_status = "master";
+        new_status = "slave";
+        new_on_top = true;
+        smart_resizing = false;
       };
 
       gestures = {
         workspace_swipe = true;
+        workspace_swipe_create_new = false;
       };
 
       exec-once = [
@@ -90,55 +107,45 @@
         "wl-paste --type image --watch cliphist store"
       ];
 
-      bind = [
-        "$mainMod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
-        "$mainMod, RETURN, exec, alacritty -e tmux new-session -A -s home"
-        "$mainMod, Q, killactive,"
-        "$mainMod, M, exit,"
-        "$mainMod, F, fullscreen,"
-        "$mainMod, E, exec, $fileManager"
-        "$mainMod, D, exec, wofi --show drun"
-        "$mainMod, O, exec, google-chrome-stable"
-        "$mainMod, P, pseudo, # dwindle"
-        "SUPER_SHIFT, S, exec, grim -g \"$(slurp)\" - | wl-copy"
+      bind =
+        [
+          "$mainMod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
+          "$mainMod, RETURN, exec, alacritty -e tmux new-session -A -s home"
+          "$mainMod, Q, killactive,"
+          "$mainMod, F, fullscreen,"
+          "$mainMod, D, exec, wofi --show drun"
+          "$mainMod, O, exec, google-chrome-stable"
+          "$mainMod, P, pseudo, # dwindle"
+          "SUPER_SHIFT, S, exec, grim -g \"$(slurp)\" - | wl-copy"
 
-        "$mainMod, h, movefocus, l"
-        "$mainMod, l, movefocus, r"
-        "$mainMod, k, movefocus, u"
-        "$mainMod, j, movefocus, d"
+          "$mainMod, h, movefocus, l"
+          "$mainMod, l, movefocus, r"
+          "$mainMod, k, movefocus, u"
+          "$mainMod, j, movefocus, d"
 
-        "$mainMod, 1, workspace, 1"
-        "$mainMod, 2, workspace, 2"
-        "$mainMod, 3, workspace, 3"
-        "$mainMod, 4, workspace, 4"
-        "$mainMod, 5, workspace, 5"
-        "$mainMod, 6, workspace, 6"
-        "$mainMod, 7, workspace, 7"
-        "$mainMod, 8, workspace, 8"
-        "$mainMod, 9, workspace, 9"
-        "$mainMod, 0, workspace, 10"
+          # Volume and Media Control
+          ", XF86AudioRaiseVolume, exec, pamixer -i 5 "
+          ", XF86AudioLowerVolume, exec, pamixer -d 5 "
+          ", XF86AudioMute, exec, pamixer -t"
+          ", XF86AudioMicMute, exec, pamixer --default-source -t"
 
-        "$mainMod SHIFT, 1, movetoworkspace, 1"
-        "$mainMod SHIFT, 2, movetoworkspace, 2"
-        "$mainMod SHIFT, 3, movetoworkspace, 3"
-        "$mainMod SHIFT, 4, movetoworkspace, 4"
-        "$mainMod SHIFT, 5, movetoworkspace, 5"
-        "$mainMod SHIFT, 6, movetoworkspace, 6"
-        "$mainMod SHIFT, 7, movetoworkspace, 7"
-        "$mainMod SHIFT, 8, movetoworkspace, 8"
-        "$mainMod SHIFT, 9, movetoworkspace, 9"
-        "$mainMod SHIFT, 0, movetoworkspace, 10"
-
-        # Volume and Media Control
-        ", XF86AudioRaiseVolume, exec, pamixer -i 5 "
-        ", XF86AudioLowerVolume, exec, pamixer -d 5 "
-        ", XF86AudioMute, exec, pamixer -t"
-        ", XF86AudioMicMute, exec, pamixer --default-source -t"
-
-        # Brightness control
-        ", XF86MonBrightnessDown, exec, brightnessctl set 5%- "
-        ", XF86MonBrightnessUp, exec, brightnessctl set +5% "
-      ];
+          # Brightness control
+          ", XF86MonBrightnessDown, exec, brightnessctl set 5%- "
+          ", XF86MonBrightnessUp, exec, brightnessctl set +5% "
+        ]
+        ++ (
+          # workspaces
+          # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
+          builtins.concatLists (builtins.genList (
+              i: let
+                ws = i + 1;
+              in [
+                "$mainMod, code:1${toString i}, workspace, ${toString ws}"
+                "$mainMod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+              ]
+            )
+            9)
+        );
     };
   };
 }
