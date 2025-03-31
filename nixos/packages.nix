@@ -1,5 +1,5 @@
 let
-  unstable = import <nixpkgs-unstable> {config = {allowUnfree = true;};};
+  _ = import <nixpkgs-unstable> {config = {allowUnfree = true;};};
 in
   {pkgs, ...}: {
     nixpkgs.config = {
@@ -18,10 +18,7 @@ in
       vscode
       deluge
       vlc
-      prismlauncher
-
-      unstable.hiddify-app
-      unstable.zed-editor
+      hyprpolkitagent
 
       remmina
       vial
@@ -61,12 +58,13 @@ in
       protoc-gen-go
       protoc-gen-go-grpc
       golangci-lint
+      graphviz
+      pprof
 
       # wm
       xwayland
       wl-clipboard
       cliphist
-      # herbstluftwm
       hyprland
       seatd
       xdg-desktop-portal-hyprland
