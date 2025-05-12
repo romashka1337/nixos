@@ -76,12 +76,12 @@
       decoration = {
         rounding = 10;
 
-        blur = {
-          enabled = true;
-          size = 16;
-          passes = 2;
-          new_optimizations = true;
-        };
+        # blur = {
+        #   enabled = true;
+        #   size = 16;
+        #   passes = 2;
+        #   new_optimizations = true;
+        # };
       };
 
       dwindle = {

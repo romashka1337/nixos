@@ -10,8 +10,15 @@
 
     lsp = {
       enable = true;
+      # luaConfig.pre = ''
+      #   require'lspconfig'.elixirls.setup {
+      #       cmd = { 'elixir-ls' }
+      #   }
+      # '';
 
       servers = {
+        erlangls. enable = true;
+        elixirls.enable = true;
         eslint.enable = true;
         nil_ls.enable = true;
         gopls = {
@@ -95,6 +102,7 @@
           yamllint.enable = true;
         };
         formatting = {
+          erlfmt.enable = true;
           golines.enable = true;
           goimports.enable = true;
           alejandra.enable = true;

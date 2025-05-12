@@ -10,6 +10,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
+
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,6 +25,7 @@
     nixpkgs,
     nixpkgs-stable,
     home-manager,
+    ghostty,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -36,6 +41,11 @@
       modules = [
         ./nixos/configuration.nix
         inputs.nixvim.nixosModules.nixvim
+        # ({pkgs, ...}: {
+        #   environment.systemPackages = [
+        #     ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
+        #   ];
+        # })
       ];
     };
 

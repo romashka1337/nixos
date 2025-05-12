@@ -19,6 +19,9 @@ in
       deluge
       vlc
       hyprpolkitagent
+      wezterm
+      openvpn
+      dbeaver-bin
 
       remmina
       vial
@@ -39,6 +42,7 @@ in
       unzip
       jq
       dig
+      iptables
       docker
       docker-compose
       runc
@@ -50,6 +54,9 @@ in
       nodejs
       lua
       protobuf
+      erlang
+      elixir
+      elixir-ls
 
       # golang specific
       go

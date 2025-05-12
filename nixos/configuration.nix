@@ -5,16 +5,23 @@
     ./modules/main.nix
   ];
 
-  virtualisation.docker.rootless = {
-    enable = true;
-    setSocketVariable = true;
+  virtualisation.docker = {
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
   };
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    kernel.sysctl."net.ipv4.conf.all.forwarding" = "1";
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+  };
 
   programs.steam = {
     enable = true;
@@ -28,14 +35,31 @@
     hostName = "collaps1ng";
     networkmanager.enable = true;
     extraHosts = ''
-      0.0.0.0 internal-gitlab.local
+        0.0.0.0 internal-gitlab.local
+      #  0.0.0.0 beta-adm.fermerskiyostrovok.ru
+      #  0.0.0.0 test-admin-api.fermerskiyostrovok.ru
+      #  0.0.0.0 beta.fermerskiyostrovok.ru
+      #  0.0.0.0 test-api.fermerskiyostrovok.ru
+      #  0.0.0.0 stage-paint-butto-fsdycs.fermerskiyostrovok.ru
+      #  0.0.0.0 s3.fermerskiyostrovok.ru
     '';
+    # Open ports in the firewall.
+    firewall = {
+      enable = false;
+      allowedTCPPorts = [10000 9999 9876];
+      # extraCommands = ''
+      #   iptables -P FORWARD ACCEPT
+      # '';
+    };
+    # networking.firewall.allowedUDPPorts = [ ... ];
+    # Or disable the firewall altogether.
+    # networking.firewall.enable = false;
   };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   services = {
     # Enable CUPS to print documents.
-    printing.enable = true;
+    printing.enable = false;
     # Enable sound with pipewire.
     pulseaudio.enable = false;
 
@@ -63,15 +87,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  # Open ports in the firewall.
-  networking.firewall = {
-    enable = false;
-    allowedTCPPorts = [10000 9999 9876];
-  };
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   system.stateVersion = "24.05"; # Did you read the comment?
 }
