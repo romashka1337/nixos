@@ -1,31 +1,22 @@
 {
   programs.nixvim.plugins = {
-    typescript-tools = {
-      enable = true;
-    };
-
     lsp-format = {
       enable = true;
     };
 
     lsp = {
       enable = true;
-      # luaConfig.pre = ''
-      #   require'lspconfig'.elixirls.setup {
-      #       cmd = { 'elixir-ls' }
-      #   }
-      # '';
 
       servers = {
-        erlangls. enable = true;
+        erlangls.enable = true;
         elixirls.enable = true;
-        eslint.enable = true;
+        ts_ls.enable = true;
         nil_ls.enable = true;
         gopls = {
           enable = true;
         };
-        # tsserver.enable = true;
         bashls.enable = true;
+        nixd.enable = true;
       };
       keymaps = {
         silent = true;
@@ -96,10 +87,12 @@
         code_actions = {
           gitsigns.enable = true;
           statix.enable = true;
+          impl.enable = true;
         };
         diagnostics = {
           statix.enable = true;
           yamllint.enable = true;
+          golangci_lint.enable = true;
         };
         formatting = {
           erlfmt.enable = true;
@@ -119,7 +112,7 @@
             disableTsServerFormatter = true;
             settings = ''
               {
-                extra_args = { "--single-quote" },
+                extra_args = { "--single-quote --print-width 80 --tab-width 2 --no-semi false" },
               }
             '';
           };

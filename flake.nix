@@ -10,10 +10,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-    };
-
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,7 +21,7 @@
     nixpkgs,
     nixpkgs-stable,
     home-manager,
-    ghostty,
+    nixvim,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -38,20 +34,12 @@
         };
         inherit inputs system;
       };
-      modules = [
-        ./nixos/configuration.nix
-        inputs.nixvim.nixosModules.nixvim
-        # ({pkgs, ...}: {
-        #   environment.systemPackages = [
-        #     ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
-        #   ];
-        # })
-      ];
+      modules = [./nixos/configuration.nix];
     };
 
     homeConfigurations.collaps1ng = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
-      modules = [./home-manager/home.nix];
+      modules = [./home-manager/home.nix nixvim.homeManagerModules.nixvim];
     };
   };
 }

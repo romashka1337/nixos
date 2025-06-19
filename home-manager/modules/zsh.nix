@@ -2,7 +2,6 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    # enableAutosuggestions = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
@@ -14,6 +13,8 @@
       upg = "sudo nixos-rebuild switch --upgrade --flake ${flakeDir}";
 
       hms = "home-manager switch --flake ${flakeDir}";
+      knew = "KUBECONFIG=$HOME/.kube/config-new kubectl";
+      kold = "KUBECONFIG=$HOME/.kube/config kubectl";
     };
 
     history.size = 10000;
@@ -21,8 +22,15 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = ["git" "sudo"];
+      plugins = [
+        "git"
+        "tmux"
+        "vi-mode"
+      ];
       theme = "agnoster"; # blinks is also really nice
     };
+    initContent = ''
+      # export KUBECONFIG=~/.kube/config:~/.kube/config-new
+    '';
   };
 }

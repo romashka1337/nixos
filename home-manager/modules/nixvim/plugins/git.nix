@@ -6,7 +6,7 @@
     gitsigns = {
       enable = true;
       settings = {
-        # trouble = true;
+        trouble = true;
         # current_line_blame = true;
         signs = {
           add = {

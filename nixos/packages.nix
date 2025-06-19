@@ -19,9 +19,9 @@ in
       deluge
       vlc
       hyprpolkitagent
-      wezterm
       openvpn
       dbeaver-bin
+      hiddify-app
 
       remmina
       vial
@@ -47,16 +47,18 @@ in
       docker-compose
       runc
       containerd
-      mongodb-compass
       npm-check-updates
       traceroute
+      psmisc
+      sing-box
+      iftop
+      tcpdump
+      gettext
+      minio-client
 
       nodejs
       lua
       protobuf
-      erlang
-      elixir
-      elixir-ls
 
       # golang specific
       go
@@ -65,6 +67,7 @@ in
       protoc-gen-go
       protoc-gen-go-grpc
       golangci-lint
+      impl
       graphviz
       pprof
 

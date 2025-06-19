@@ -1,4 +1,8 @@
-{...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ./packages.nix
@@ -32,28 +36,37 @@
 
   # Enable networking
   networking = {
+    nameservers = ["8.8.8.8"];
     hostName = "collaps1ng";
-    networkmanager.enable = true;
-    extraHosts = ''
-        0.0.0.0 internal-gitlab.local
-      #  0.0.0.0 beta-adm.fermerskiyostrovok.ru
-      #  0.0.0.0 test-admin-api.fermerskiyostrovok.ru
-      #  0.0.0.0 beta.fermerskiyostrovok.ru
-      #  0.0.0.0 test-api.fermerskiyostrovok.ru
-      #  0.0.0.0 stage-paint-butto-fsdycs.fermerskiyostrovok.ru
-      #  0.0.0.0 s3.fermerskiyostrovok.ru
-    '';
-    # Open ports in the firewall.
-    firewall = {
-      enable = false;
-      allowedTCPPorts = [10000 9999 9876];
-      # extraCommands = ''
-      #   iptables -P FORWARD ACCEPT
-      # '';
+    networkmanager = {
+      enable = true;
+      insertNameservers = ["8.8.8.8"];
     };
-    # networking.firewall.allowedUDPPorts = [ ... ];
-    # Or disable the firewall altogether.
-    # networking.firewall.enable = false;
+    extraHosts = ''
+      0.0.0.0 internal-gitlab.local
+    '';
+    firewall = {
+      enable = true;
+      allowedTCPPortRanges = [
+        {
+          from = 1;
+          to = 65535;
+        }
+      ];
+      allowedUDPPortRanges = [
+        {
+          from = 1;
+          to = 65535;
+        }
+      ];
+      extraCommands = ''
+      '';
+    };
+    wg-quick = {
+      interfaces = {
+        wg0.configFile = "/home/collaps1ng/.nixos/nixos/private/wg0.conf";
+      };
+    };
   };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -62,6 +75,13 @@
     printing.enable = false;
     # Enable sound with pipewire.
     pulseaudio.enable = false;
+    xserver = {
+      xkb = {
+        layout = "us,ru";
+        variant = "qwerty,";
+        options = "grp:win_space_toggle";
+      };
+    };
 
     pipewire = {
       enable = true;
@@ -75,18 +95,32 @@
     openssh.enable = true;
   };
 
+  environment.etc."sing-box/config.json" = {
+    source = /home/collaps1ng/.nixos/nixos/private/sing-box.json;
+    mode = "0700";
+  };
+  systemd.services = {
+    sing-box = {
+      wantedBy = ["multi-user.target"];
+      restartTriggers = [
+        config.environment.etc."sing-box/config.json".source
+      ];
+      serviceConfig = {
+        ExecStart = "${pkgs.sing-box}/bin/sing-box run -D /var/lib/sing-box -C /etc/sing-box";
+        ExecReload = "${pkgs.coreutils}/bin/kill -HUP $MAINPID";
+        Restart = "on-failure";
+        StateDirectory = "sing-box";
+        StateDirectoryMode = "0700";
+        RuntimeDirectory = "sing-box";
+        RuntimeDirectoryMode = "0700";
+      };
+    };
+  };
+
   security = {
     rtkit.enable = true;
     pki.certificateFiles = [/ca.crt];
   };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
   system.stateVersion = "24.05"; # Did you read the comment?
 }
