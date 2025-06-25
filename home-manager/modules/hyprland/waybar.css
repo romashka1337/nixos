@@ -1,0 +1,112 @@
+@define-color base            #191724;
+@define-color surface         #1f1d2e;
+@define-color overlay         #26233a;
+
+@define-color muted           #6e6a86;
+@define-color subtle          #908caa;
+@define-color text            #e0def4;
+
+@define-color love            #eb6f92;
+@define-color gold            #f6c177;
+@define-color rose            #ebbcba;
+@define-color pine            #31748f;
+@define-color foam            #9ccfd8;
+@define-color iris            #c4a7e7;
+
+@define-color highlightLow    #21202e;
+@define-color highlightMed    #403d52;
+@define-color highlightHigh   #524f67;
+
+* {
+  font-family: Jetbrains Mono;
+  font-weight: bold;
+  font-size: 14px;
+  min-height: 0;
+  padding-right: 2px;
+  padding-left: 2px;
+  padding-bottom: 0px;
+}
+
+#waybar {
+  background: transparent;
+  color: @subtle;
+  margin: 2px 2px;
+}
+
+#workspaces {
+  border-radius: 5px;
+  margin: 5px;
+  background: @base;
+  margin-left: 1rem;
+}
+#workspaces button {
+  color: @subtle;
+  border-radius: 5px;
+  padding: 0.4rem;
+}
+#workspaces button.active {
+  color: @foam;
+  border-radius: 5px;
+}
+#workspaces button:hover {
+  color: @highlightMed;
+  border-radius: 5px;
+}
+
+#language {
+  color: @subtle;
+  background-color: @base;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+#clock {
+  border-radius: 5px;
+  margin-right: 1rem;
+  background-color: @base;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
+}
+
+#pulseaudio,
+#memory,
+#cpu,
+#battery,
+#network,
+#tray {
+  color: @subtle;
+  background-color: @base;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
+  border-radius: 0px 5px 5px 0px;
+}
+
+#pulseaudio {
+  border-radius: 5px 0px 0px 5px;
+  /* margin-left: 1rem; */
+}
+
+#memory {
+  border-radius: 0px 5px 5px 0px;
+}
+
+#battery {
+  color: @subtle;
+  transition: none;
+}
+#battery.charging {
+  color: @pine;
+}
+#battery.warning:not(.charging) {
+  color: @rose;
+}
+#battery.critical:not(.charging) {
+  color: @gold;
+}
+
+#tray {
+  margin-right: 1rem;
+  margin-left: 1rem;
+  border-radius: 5px;
+}

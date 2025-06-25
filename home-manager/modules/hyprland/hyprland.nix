@@ -41,9 +41,25 @@
         "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_TYPE,wayland"
         "XDG_SESSION_DESKTOP,Hyprland"
-        # "XCURSOR_SIZE,12"
+        "XCURSOR_SIZE,24"
+        "HYPRCURSOR_SIZE,24"
         "QT_QPA_PLATFORM,wayland"
         "XDG_SCREENSHOTS_DIR,~/screens"
+        "base,0xff191724"
+        "surface,0xff1f1d2e"
+        "overlay,0xff26233a"
+        "muted,0xff6e6a86"
+        "subtle,0xff908caa"
+        "text,0xffe0def4"
+        "love,0xffeb6f92"
+        "gold,0xfff6c177"
+        "rose,0xffebbcba"
+        "pine,0xff31748f"
+        "foam,0xff9ccfd8"
+        "iris,0xffc4a7e7"
+        "highlightLow,0xff21202e"
+        "highlightMed,0xff403d52"
+        "highlightHigh,0xff524f67"
       ];
 
       input = {
@@ -59,11 +75,13 @@
       };
 
       general = {
-        gaps_in = 0;
-        gaps_out = 20;
+        gaps_in = 5;
+        gaps_out = 10;
         border_size = 2;
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
+        "col.active_border" = "rgba(ffebbcba) rgba(ff31748f) rgba(ffeb6f92) rgba(ffc4a7e7) 90deg";
+        "col.inactive_border" = "rgba(ff6e6a86)";
+        # "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+        # "col.inactive_border" = "rgba(595959aa)";
         layout = "dwindle";
       };
 
@@ -73,13 +91,9 @@
 
       decoration = {
         rounding = 10;
-
-        # blur = {
-        #   enabled = true;
-        #   size = 16;
-        #   passes = 2;
-        #   new_optimizations = true;
-        # };
+      };
+      animations = {
+        enabled = false;
       };
 
       dwindle = {
@@ -103,16 +117,20 @@
         "waybar"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
-        # "hyprpolkitagent"
+      ];
+
+      windowrule = [
+        "suppressevent maximize, class:.*"
+        "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
       ];
 
       bind =
         [
-          "$mainMod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
-          "$mainMod, RETURN, exec, alacritty -e tmux new-session -A -s home"
+          "$mainMod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
+          "$mainMod, RETURN, exec, ghostty -e tmux new-session -A -s home"
           "$mainMod, Q, killactive,"
           "$mainMod, F, fullscreen,"
-          "$mainMod, D, exec, wofi --show drun"
+          "$mainMod, D, exec, rofi -show drun"
           "$mainMod, O, exec, google-chrome-stable"
           "$mainMod, P, pseudo, # dwindle"
           "SUPER_SHIFT, S, exec, grim -g \"$(slurp)\" - | wl-copy"
@@ -135,7 +153,8 @@
         ++ (
           # workspaces
           # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
-          builtins.concatLists (builtins.genList (
+          builtins.concatLists (
+            builtins.genList (
               i: let
                 ws = i + 1;
               in [
@@ -143,7 +162,8 @@
                 "$mainMod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
               ]
             )
-            9)
+            9
+          )
         );
     };
   };

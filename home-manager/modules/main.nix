@@ -1,14 +1,15 @@
 {
   imports = [
-    ./zsh.nix
+    ./zsh/zsh.nix
 
-    ./git.nix
-    ./alacritty.nix
-    ./cursor.nix
+    ./git/git.nix
+    ./ghostty/ghostty.nix
+    ./tmux/tmux.nix
+    ./cursor/cursor.nix
 
-    ./wofi.nix
-    ./hyprland.nix
-    ./waybar.nix
+    ./rofi/rofi.nix
+    ./hyprland/hyprland.nix
+    ./hyprland/waybar.nix
 
     ./nixvim/nixvim.nix
   ];

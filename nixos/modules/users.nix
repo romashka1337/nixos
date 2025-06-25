@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.zsh.enable = true;
 
   time.timeZone = "Asia/Novosibirsk";
@@ -20,9 +21,13 @@
     users.collaps1ng = {
       isNormalUser = true;
       description = "collaps1ng";
-      extraGroups = ["networkmanager" "wheel" "docker"];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "docker"
+      ];
     };
   };
-
-  services.getty.autologinUser = "collaps1ng";
+  #
+  # services.getty.autologinUser = "collaps1ng";
 }

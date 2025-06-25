@@ -16,7 +16,10 @@
     };
   };
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Bootloader.
   boot = {
@@ -59,8 +62,7 @@
           to = 65535;
         }
       ];
-      extraCommands = ''
-      '';
+      extraCommands = '''';
     };
     wg-quick = {
       interfaces = {
@@ -100,7 +102,10 @@
     mode = "0700";
   };
   systemd.services = {
+    NetworkManager-wait-online.enable = false;
     sing-box = {
+      enable = true;
+      # wantedBy = pkgs.lib.mkForce [];
       wantedBy = ["multi-user.target"];
       restartTriggers = [
         config.environment.etc."sing-box/config.json".source

@@ -9,16 +9,20 @@
     enable = true;
 
     defaultEditor = true;
-    colorschemes.catppuccin = {
+    colorschemes.rose-pine = {
       enable = true;
+      settings.styles = {
+        bold = true;
+        transparency = false;
+      };
     };
     extraConfigLua = ''
-      require("nvim-treesitter.configs").setup {
+      require("nvim-treesitter.configs").setup({
         highlight = {
           enable = true,
           additional_vim_regex_highlighting = false
         },
-      }
+      })
     '';
   };
 }
