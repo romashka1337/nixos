@@ -80,8 +80,6 @@
         border_size = 2;
         "col.active_border" = "rgba(ffebbcba) rgba(ff31748f) rgba(ffeb6f92) rgba(ffc4a7e7) 90deg";
         "col.inactive_border" = "rgba(ff6e6a86)";
-        # "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        # "col.inactive_border" = "rgba(595959aa)";
         layout = "dwindle";
       };
 
@@ -113,7 +111,6 @@
       };
 
       exec-once = [
-        "swww init"
         "waybar"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
@@ -133,7 +130,8 @@
           "$mainMod, D, exec, rofi -show drun"
           "$mainMod, O, exec, google-chrome-stable"
           "$mainMod, P, pseudo, # dwindle"
-          "SUPER_SHIFT, S, exec, grim -g \"$(slurp)\" - | wl-copy"
+          "SUPER_SHIFT, S, exec, hyprshot -m region --clipboard-only"
+          "$mainMod, S, exec, hyprshot -m window --clipboard-only"
 
           "$mainMod, h, movefocus, l"
           "$mainMod, l, movefocus, r"
@@ -155,14 +153,15 @@
           # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
           builtins.concatLists (
             builtins.genList (
-              i: let
+              i:
+              let
                 ws = i + 1;
-              in [
+              in
+              [
                 "$mainMod, code:1${toString i}, workspace, ${toString ws}"
                 "$mainMod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
               ]
-            )
-            9
+            ) 9
           )
         );
     };

@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
     ./packages.nix
@@ -39,11 +40,11 @@
 
   # Enable networking
   networking = {
-    nameservers = ["8.8.8.8"];
+    nameservers = [ "8.8.8.8" ];
     hostName = "collaps1ng";
     networkmanager = {
       enable = true;
-      insertNameservers = ["8.8.8.8"];
+      insertNameservers = [ "8.8.8.8" ];
     };
     extraHosts = ''
       0.0.0.0 internal-gitlab.local
@@ -106,7 +107,7 @@
     sing-box = {
       enable = true;
       # wantedBy = pkgs.lib.mkForce [];
-      wantedBy = ["multi-user.target"];
+      wantedBy = [ "multi-user.target" ];
       restartTriggers = [
         config.environment.etc."sing-box/config.json".source
       ];
@@ -124,7 +125,7 @@
 
   security = {
     rtkit.enable = true;
-    pki.certificateFiles = [/ca.crt];
+    pki.certificateFiles = [ /ca.crt ];
   };
 
   system.stateVersion = "24.05"; # Did you read the comment?

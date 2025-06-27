@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.tmux = {
     enable = true;
 
@@ -13,7 +14,8 @@
       unbind C-b
       set-option -g prefix C-a
       bind-key C-a send-prefix
-      set -g base-index 1
+      # this is fucked up
+      set -g base-index 2
 
       set -g renumber-windows on    # renumber windows when a window is closed
 

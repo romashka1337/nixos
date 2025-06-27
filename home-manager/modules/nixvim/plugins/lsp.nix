@@ -98,7 +98,6 @@
           erlfmt.enable = true;
           golines.enable = true;
           goimports.enable = true;
-          alejandra.enable = true;
           black = {
             enable = true;
             settings = ''

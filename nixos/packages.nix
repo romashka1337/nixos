@@ -21,7 +21,6 @@ in
     vscode
     deluge
     vlc
-    hyprpolkitagent
     dbeaver-bin
     lens
     ghostty
@@ -37,7 +36,6 @@ in
     htop
     fzf
     ripgrep
-    swww
     gnumake
     kubectl
     kubernetes-helm
@@ -74,16 +72,12 @@ in
     pprof
 
     # wm
-    xwayland
+    hyprshot
     wl-clipboard
     cliphist
     hyprland
-    seatd
     xdg-desktop-portal-hyprland
-    polybar
     waybar
-    grim
-    slurp
 
     pipewire
     pulseaudio

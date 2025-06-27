@@ -31,6 +31,7 @@ in
         knew = "KUBECONFIG=$HOME/.kube/config-new kubectl";
         kold = "KUBECONFIG=$HOME/.kube/config kubectl";
         linker = "linkerd --kubeconfig ~/.kube/config-new";
+        vim = "nvim";
       };
 
     history.size = 10000;
@@ -38,11 +39,7 @@ in
 
     oh-my-zsh = {
       enable = true;
-      plugins = [
-        "git"
-        "tmux"
-        "vi-mode"
-      ];
+      plugins = [ "git" ];
     };
 
     initContent = ''
