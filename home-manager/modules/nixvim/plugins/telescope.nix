@@ -20,6 +20,15 @@
         "<leader>sg" = "live_grep";
         "<leader>sr" = "resume";
         "<leader>ds" = "lsp_document_symbols";
+        "<leader>ws" = "lsp_workspace_symbols";
+
+        "<leader>sk" = {
+          mode = "n";
+          action = "keymaps";
+          options = {
+            desc = "[S]earch [K]eymaps";
+          };
+        };
       };
 
       settings.defaults = {

@@ -13,6 +13,7 @@
       enable = true;
       settings.styles = {
         bold = true;
+        italic = false;
         transparency = false;
       };
     };

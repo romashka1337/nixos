@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
+  tuigreet2 = "${pkgs.tuigreet}/bin/tuigreet";
   hyprland-session = "${pkgs.hyprland}/share/wayland-sessions";
 in
 {
@@ -14,7 +14,7 @@ in
     enable = true;
     settings = {
       default_session = {
-        command = "${tuigreet} \
+        command = "${tuigreet2} \
           --time --time-format '%I:%M %p | %a • %h | %F' --remember \
           --remember-session --sessions ${hyprland-session} \
           --theme border=magenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red \
@@ -50,6 +50,6 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    greetd.tuigreet
+    tuigreet
   ];
 }

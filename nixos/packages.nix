@@ -24,6 +24,8 @@ in
     dbeaver-bin
     lens
     ghostty
+    anydesk
+    firefox
 
     remmina
     vial
@@ -56,6 +58,13 @@ in
     gettext
     minio-client
     linkerd
+    graphviz
+    gcc
+    claude-code
+    telepresence2
+    libgbm
+    gdb
+    gdbgui
 
     nodejs
     lua

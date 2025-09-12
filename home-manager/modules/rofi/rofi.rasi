@@ -36,7 +36,7 @@ configuration {
 	selected-urgent-background: @urgent-background;
 	selected-active-background: @active-background;
 	separatorcolor: @active-background;
-	bordercolor: @ora;
+	bordercolor: @red;
 }
 
 #window {

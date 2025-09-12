@@ -119,51 +119,62 @@
       windowrule = [
         "suppressevent maximize, class:.*"
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
+        "float, title:.*Developer Tools.*"
+        "size 30% 100%, title:.*Developer Tools.*"
       ];
 
-      bind =
-        [
-          "$mainMod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
-          "$mainMod, RETURN, exec, ghostty -e tmux new-session -A -s home"
-          "$mainMod, Q, killactive,"
-          "$mainMod, F, fullscreen,"
-          "$mainMod, D, exec, rofi -show drun"
-          "$mainMod, O, exec, google-chrome-stable"
-          "$mainMod, P, pseudo, # dwindle"
-          "SUPER_SHIFT, S, exec, hyprshot -m region --clipboard-only"
-          "$mainMod, S, exec, hyprshot -m window --clipboard-only"
+      bind = [
+        "$mainMod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
+        "$mainMod, RETURN, exec, ghostty"
+        "$mainMod, Q, killactive,"
+        "$mainMod, F, fullscreen,"
+        "$mainMod, D, exec, rofi -show drun"
+        "$mainMod, O, exec, firefox"
+        "$mainMod, P, pseudo, # dwindle"
+        "SUPER_SHIFT, S, exec, hyprshot -m region --clipboard-only"
+        "$mainMod, S, exec, hyprshot -m window --clipboard-only"
 
-          "$mainMod, h, movefocus, l"
-          "$mainMod, l, movefocus, r"
-          "$mainMod, k, movefocus, u"
-          "$mainMod, j, movefocus, d"
+        "$mainMod, h, movefocus, l"
+        "$mainMod, l, movefocus, r"
+        "$mainMod, k, movefocus, u"
+        "$mainMod, j, movefocus, d"
 
-          # Volume and Media Control
-          ", XF86AudioRaiseVolume, exec, pamixer -i 5 "
-          ", XF86AudioLowerVolume, exec, pamixer -d 5 "
-          ", XF86AudioMute, exec, pamixer -t"
-          ", XF86AudioMicMute, exec, pamixer --default-source -t"
+        "SUPER_SHIFT, h, resizeactive, -15 0"
+        "SUPER_SHIFT, l, resizeactive, 15 0"
+        "SUPER_SHIFT, k, resizeactive, 0 -15"
+        "SUPER_SHIFT, j, resizeactive, 0 15"
 
-          # Brightness control
-          ", XF86MonBrightnessDown, exec, brightnessctl set 5%- "
-          ", XF86MonBrightnessUp, exec, brightnessctl set +5% "
-        ]
-        ++ (
-          # workspaces
-          # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
-          builtins.concatLists (
-            builtins.genList (
-              i:
-              let
-                ws = i + 1;
-              in
-              [
-                "$mainMod, code:1${toString i}, workspace, ${toString ws}"
-                "$mainMod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-              ]
-            ) 9
-          )
-        );
+        "SUPER_CTRL, h, movewindow, left"
+        "SUPER_CTRL, l, movewindow, down"
+        "SUPER_CTRL, k, movewindow, up"
+        "SUPER_CTRL, j, movewindow, right"
+
+        # Volume and Media Control
+        ", XF86AudioRaiseVolume, exec, pamixer -i 5 "
+        ", XF86AudioLowerVolume, exec, pamixer -d 5 "
+        ", XF86AudioMute, exec, pamixer -t"
+        ", XF86AudioMicMute, exec, pamixer --default-source -t"
+
+        # Brightness control
+        ", XF86MonBrightnessDown, exec, brightnessctl set 5%- "
+        ", XF86MonBrightnessUp, exec, brightnessctl set +5% "
+      ]
+      ++ (
+        # workspaces
+        # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
+        builtins.concatLists (
+          builtins.genList (
+            i:
+            let
+              ws = i + 1;
+            in
+            [
+              "$mainMod, code:1${toString i}, workspace, ${toString ws}"
+              "$mainMod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+            ]
+          ) 9
+        )
+      );
     };
   };
 }

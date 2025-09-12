@@ -8,7 +8,7 @@
 
         modules-left = [
           "hyprland/workspaces"
-          "hyprland/language"
+          # "hyprland/language"
         ];
         modules-center = [ "clock" ];
         modules-right = [

@@ -41,6 +41,7 @@
       bind -r L resize-pane -R 2
 
       bind-key -r f run-shell "tmux neww ~/.config/tmux-sessionizer/tmux-sessionizer"
+      bind-key -r M-h run-shell "tmux neww ~/.config/tmux-sessionizer/tmux-sessionizer -s 0"
 
       set-window-option -g mode-keys vi
       bind -T copy-mode-vi v send-keys -X begin-selection

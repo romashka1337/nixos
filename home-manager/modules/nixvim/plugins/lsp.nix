@@ -8,13 +8,9 @@
       enable = true;
 
       servers = {
-        erlangls.enable = true;
-        elixirls.enable = true;
         ts_ls.enable = true;
         nil_ls.enable = true;
-        gopls = {
-          enable = true;
-        };
+        gopls.enable = true;
         bashls.enable = true;
         nixd.enable = true;
       };

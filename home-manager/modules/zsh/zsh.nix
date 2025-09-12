@@ -26,12 +26,13 @@ in
         rb = "sudo nixos-rebuild switch --flake ${flakeDir}";
         upd = "nix flake update --flake ${flakeDir}";
         upg = "sudo nixos-rebuild switch --upgrade --flake ${flakeDir}";
-
         hms = "home-manager switch --flake ${flakeDir}";
+
         knew = "KUBECONFIG=$HOME/.kube/config-new kubectl";
         kold = "KUBECONFIG=$HOME/.kube/config kubectl";
         linker = "linkerd --kubeconfig ~/.kube/config-new";
         vim = "nvim";
+        tmuxa = "tmux new-session -A -s home";
       };
 
     history.size = 10000;
@@ -45,11 +46,15 @@ in
     initContent = ''
       source ${powerlevel10k}/powerlevel10k.zsh-theme;
       source ~/.config/zsh/pl10k
+      source ~/.config/zsh/telepresence
     '';
   };
   home.file = {
     "/.config/zsh/pl10k" = {
       text = builtins.readFile ./pl10k;
+    };
+    "/.config/zsh/telepresence" = {
+      text = builtins.readFile ./telepresence;
     };
   };
 }
