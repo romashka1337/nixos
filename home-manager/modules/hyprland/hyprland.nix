@@ -105,10 +105,11 @@
         smart_resizing = false;
       };
 
-      gestures = {
-        workspace_swipe = true;
-        workspace_swipe_create_new = false;
-      };
+      gesture = [
+        "3, horizontal, workspace"
+        "3, pinchout, fullscreen"
+        "3, pinchin, fullscreen"
+      ];
 
       exec-once = [
         "waybar"

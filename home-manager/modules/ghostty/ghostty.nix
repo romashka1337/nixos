@@ -3,10 +3,10 @@
     enable = true;
     enableZshIntegration = true;
     settings = {
-      theme = "rose-pine";
+      theme = "Rose Pine";
       font-family = "JetBrains Mono";
       font-style = "Bold";
-      font-size = 12.0;
+      font-size = 13.0;
       background-opacity = 1;
 
       confirm-close-surface = false;
