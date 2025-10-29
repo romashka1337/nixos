@@ -46,15 +46,11 @@ in
     initContent = ''
       source ${powerlevel10k}/powerlevel10k.zsh-theme;
       source ~/.config/zsh/pl10k
-      source ~/.config/zsh/telepresence
     '';
   };
   home.file = {
     "/.config/zsh/pl10k" = {
       text = builtins.readFile ./pl10k;
-    };
-    "/.config/zsh/telepresence" = {
-      text = builtins.readFile ./telepresence;
     };
   };
 }

@@ -5,8 +5,8 @@
     settings = {
       theme = "Rose Pine";
       font-family = "JetBrains Mono";
-      font-style = "Bold";
-      font-size = 13.0;
+      # font-style = "Bold";
+      font-size = 14.0;
       background-opacity = 1;
 
       confirm-close-surface = false;

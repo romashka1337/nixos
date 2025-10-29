@@ -68,6 +68,7 @@
     wg-quick = {
       interfaces = {
         wg0.configFile = "/home/collaps1ng/.nixos/nixos/private/wg0.conf";
+        # wg1.configFile = "/home/collaps1ng/.nixos/nixos/private/wg1.conf";
       };
     };
   };

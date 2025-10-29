@@ -14,25 +14,22 @@ in
 
   environment.systemPackages = with pkgs; [
     # gui
+    # all of this should be in home-manager???
     telegram-desktop
     google-chrome
-    rofi
     postman
     vscode
     deluge
     vlc
     dbeaver-bin
     lens
-    ghostty
     anydesk
     firefox
-
     remmina
+
     vial
-    via
 
     # cli
-    tmux
     git
     libgcc
     htop
@@ -50,21 +47,16 @@ in
     docker-compose
     runc
     containerd
-    npm-check-updates
     traceroute
     psmisc
     sing-box
     tcpdump
-    gettext
     minio-client
     linkerd
     graphviz
     gcc
     claude-code
-    telepresence2
     libgbm
-    gdb
-    gdbgui
 
     nodejs
     lua
@@ -78,7 +70,7 @@ in
     protoc-gen-go-grpc
     golangci-lint
     impl
-    pprof
+    # pprof
 
     # wm
     hyprshot
@@ -98,7 +90,6 @@ in
 
   services.udev.packages = with pkgs; [
     vial
-    via
   ];
 
   fonts.packages = with pkgs; [

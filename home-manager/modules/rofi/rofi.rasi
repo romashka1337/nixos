@@ -1,7 +1,7 @@
 @import "default"
 
 configuration {
-  font: "JetBrains Mono 12";
+  font: "JetBrains 14";
   show-icons: false;
   terminal: "ghostty";
   drun-display-format: "{name} [({generic})]";

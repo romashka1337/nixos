@@ -1,9 +1,11 @@
 {
   programs.git = {
     enable = true;
-    userName = "ROBOT DOLBAEB";
-    userEmail = "roman@entersight.ru";
-    extraConfig = {
+    settings = {
+      user = {
+        name = "ROBOT DOLBAEB";
+        email = "roman@entersight.ru";
+      };
       push = {
         autoSetupRemote = true;
       };
