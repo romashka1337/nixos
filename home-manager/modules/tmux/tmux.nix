@@ -8,6 +8,8 @@
       set -g default-terminal "tmux-256color"
       set -s escape-time 0
       set -g mouse on
+      set -s escape-time 10
+      set -sg repeat-time 50
 
       set -g status-style 'bg=#6e6a86 fg=#e0def4'
 

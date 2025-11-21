@@ -10,6 +10,8 @@
     ./modules/main.nix
   ];
 
+  hardware.bluetooth.enable = true;
+
   virtualisation.docker = {
     rootless = {
       enable = true;
@@ -69,6 +71,7 @@
       interfaces = {
         wg0.configFile = "/home/collaps1ng/.nixos/nixos/private/wg0.conf";
         # wg1.configFile = "/home/collaps1ng/.nixos/nixos/private/wg1.conf";
+        wg2.configFile = "/home/collaps1ng/.nixos/nixos/private/wg2.conf";
       };
     };
   };
@@ -102,6 +105,7 @@
         PermitRootLogin = "no";
       };
     };
+    udisks2.enable = true;
   };
 
   environment.etc."sing-box/config.json" = {

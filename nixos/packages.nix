@@ -15,7 +15,6 @@ in
   environment.systemPackages = with pkgs; [
     # gui
     # all of this should be in home-manager???
-    telegram-desktop
     google-chrome
     postman
     vscode
@@ -26,6 +25,8 @@ in
     anydesk
     firefox
     remmina
+    overskride
+    bluetuith
 
     vial
 

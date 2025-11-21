@@ -123,10 +123,15 @@
         "float, title:.*Developer Tools.*"
         "size 30% 100%, title:.*Developer Tools.*"
       ];
+      windowrulev2 = [
+        "size 60% 60%, floating:1"
+        "center, floating:1"
+      ];
 
       bind = [
         "$mainMod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
-        "$mainMod, RETURN, exec, ghostty"
+        "$mainMod, RETURN, exec, ghostty +new-window"
+        "$mainMod, T, exec, firefox --new-window web.telegram.org"
         "$mainMod, Q, killactive,"
         "$mainMod, F, fullscreen,"
         "$mainMod, D, exec, rofi -show drun"

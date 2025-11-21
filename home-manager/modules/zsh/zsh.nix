@@ -28,8 +28,6 @@ in
         upg = "sudo nixos-rebuild switch --upgrade --flake ${flakeDir}";
         hms = "home-manager switch --flake ${flakeDir}";
 
-        knew = "KUBECONFIG=$HOME/.kube/config-new kubectl";
-        kold = "KUBECONFIG=$HOME/.kube/config kubectl";
         linker = "linkerd --kubeconfig ~/.kube/config-new";
         vim = "nvim";
         tmuxa = "tmux new-session -A -s home";

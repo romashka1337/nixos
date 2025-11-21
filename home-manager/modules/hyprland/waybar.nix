@@ -13,8 +13,8 @@
         modules-center = [ "clock" ];
         modules-right = [
           "pulseaudio"
-          "cpu"
           "memory"
+          "bluetooth"
           "battery"
           "network"
           "tray"
@@ -64,16 +64,18 @@
           max-length = 7;
         };
 
-        "memory" = {
+        memory = {
           interval = 5;
           format = "  {used:0.1f}G/{total:0.1f}G";
           tooltip = false;
         };
 
-        "cpu" = {
-          interval = 2;
-          format = "{usage}% ";
-          min-length = 6;
+        bluetooth = {
+          "format-on" = "󰂯";
+          "format-connected" = "󰂱";
+          "format-connected-battery" = "󰂱 {device_battery_percentage}%";
+          "format-off" = "󰂲";
+          "on-click" = "hyprctl dispatch exec [float] 'ghostty -e bluetuith'";
         };
 
         network = {
