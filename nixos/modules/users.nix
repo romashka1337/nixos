@@ -25,6 +25,7 @@
         "networkmanager"
         "wheel"
         "docker"
+        "lp"
       ];
     };
   };

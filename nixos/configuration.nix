@@ -106,10 +106,12 @@
       };
     };
     udisks2.enable = true;
+    timesyncd.enable = true;
   };
+  time.timeZone = "Asia/Novosibirsk";
 
   environment.etc."sing-box/config.json" = {
-    source = /home/collaps1ng/.nixos/nixos/private/sing-box.json;
+    source = /home/collaps1ng/.nixos/nixos/private/sing-box1.json;
     mode = "0700";
   };
   systemd.services = {

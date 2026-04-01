@@ -118,24 +118,18 @@
       ];
 
       windowrule = [
-        "suppressevent maximize, class:.*"
-        "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
-        "float, title:.*Developer Tools.*"
-        "size 30% 100%, title:.*Developer Tools.*"
-      ];
-      windowrulev2 = [
-        "size 60% 60%, floating:1"
-        "center, floating:1"
+        "size 60% 60%, match:float yes"
+        "center yes, match:float yes"
       ];
 
       bind = [
         "$mainMod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
         "$mainMod, RETURN, exec, ghostty +new-window"
-        "$mainMod, T, exec, firefox --new-window web.telegram.org"
+        "$mainMod, T, exec, google-chrome-stable --new-window web.telegram.org"
         "$mainMod, Q, killactive,"
-        "$mainMod, F, fullscreen,"
+        "$mainMod, F, fullscreenstate, 2, 0"
         "$mainMod, D, exec, rofi -show drun"
-        "$mainMod, O, exec, firefox"
+        "$mainMod, O, exec, google-chrome-stable"
         "$mainMod, P, pseudo, # dwindle"
         "SUPER_SHIFT, S, exec, hyprshot -m region --clipboard-only"
         "$mainMod, S, exec, hyprshot -m window --clipboard-only"

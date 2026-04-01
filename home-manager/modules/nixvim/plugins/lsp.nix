@@ -8,7 +8,12 @@
       enable = true;
 
       servers = {
-        ts_ls.enable = true;
+        ts_ls = {
+          enable = true;
+          onAttach.function = ''
+            client.server_capabilities.semanticTokensProvider = nil
+          '';
+        };
         nil_ls.enable = true;
         gopls.enable = true;
         bashls.enable = true;

@@ -17,6 +17,7 @@
       cursor-style = "block";
       cursor-style-blink = false;
       mouse-scroll-multiplier = 0.3;
+      app-notifications = "no-clipboard-copy";
     };
   };
 }

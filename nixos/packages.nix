@@ -11,6 +11,17 @@ in
     allowUnfree = true;
     allowBroken = true;
   };
+  # nixpkgs.overlays = [
+  #   (final: prev: {
+  #     python313Packages = prev.python313Packages.overrideScope (
+  #       pyfinal: pyprev: {
+  #         picosvg = pyprev.picosvg.overridePythonAttrs (old: {
+  #           doCheck = false;
+  #         });
+  #       }
+  #     );
+  #   })
+  # ];
 
   environment.systemPackages = with pkgs; [
     # gui
@@ -22,11 +33,12 @@ in
     vlc
     dbeaver-bin
     lens
-    anydesk
-    firefox
     remmina
     overskride
     bluetuith
+    inetutils
+    anydesk
+    nmap
 
     vial
 
@@ -56,8 +68,9 @@ in
     linkerd
     graphviz
     gcc
-    claude-code
+    claude-code-bin
     libgbm
+    openssl
 
     nodejs
     lua

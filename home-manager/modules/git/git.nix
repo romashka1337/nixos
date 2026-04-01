@@ -2,8 +2,9 @@
   programs.git = {
     enable = true;
     settings = {
+      credential.helper = "store";
       user = {
-        name = "ROBOT DOLBAEB";
+        name = "roman";
         email = "roman@entersight.ru";
       };
       push = {
